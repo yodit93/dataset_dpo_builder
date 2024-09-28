@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPO Dataset Builder</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .form-section {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      textarea {
+        width: 100%;
+        height: 100px;
+      }
+      select, button, input {
+        margin-top: 10px;
+      }
+      .delete-btn {
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+        padding: 5px 10px;
+      }
+      .entry-container {
+        background-color: #f9f9f9;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create DPO JSON Dataset</h1>
+
+    <!-- File Upload for Previous JSON -->
+    <div class="form-section">
+      <h3>Upload Existing Dataset</h3>
+      <input type="file" id="uploadFile" />
+      <button id="uploadBtn">Upload</button>
+    </div>
+    
+    <!-- Form for adding conversations -->
+    <div class="form-section">
+      <h3>Conversations</h3>
+      <div id="conversationRows">
+        <!-- Conversation rows will be dynamically added here -->
+      </div>
+      <button id="addConversationBtn">Add Conversation</button>
+    </div>
+
+    <!-- Section for chosen response -->
+    <div class="form-section">
+      <h3>Chosen Response</h3>
+      <label for="chosenFrom">Chosen From (select):</label>
+      <select id="chosenFrom">
+        <option value="gpt">gpt</option>
+        <option value="human">human</option>
+        <option value="system">system</option>
+      </select>
+
+      <label for="chosenValue">Chosen Message:</label>
+      <textarea id="chosenValue" placeholder="Enter the chosen response..."></textarea>
+    </div>
+
+    <!-- Section for rejected response -->
+    <div class="form-section">
+      <h3>Rejected Response</h3>
+      <label for="rejectedFrom">Rejected From (select):</label>
+      <select id="rejectedFrom">
+        <option value="gpt">gpt</option>
+        <option value="human">human</option>
+        <option value="system">system</option>
+      </select>
+
+      <label for="rejectedValue">Rejected Message:</label>
+      <textarea id="rejectedValue" placeholder="Enter the rejected response..."></textarea>
+    </div>
+
+    <!-- Validation Section -->
+    <div class="form-section">
+      <label for="validationStatus">Validation Status:</label>
+      <select id="validationStatus">
+        <option value="human_validated">Human Validated</option>
+        <option value="gpt_validated">GPT Validated</option>
+        <option value="system_validated">System Validated</option>
+      </select>
+    </div>
+
+    <!-- Input field for setting the filename -->
+    <div class="form-section">
+      <h3>Set Filename</h3>
+      <label for="filenameInput">Filename (without extension):</label>
+      <input type="text" id="filenameInput" placeholder="Enter filename" value="dataset">
+    </div>
+
+    <!-- Button to submit the conversation and responses -->
+    <button id="submitDatasetBtn">Submit Entry</button>
+
+    <!-- Button to download the JSON file -->
+    <button id="downloadBtn">Download JSON</button>
+
+    <!-- Display current dataset -->
+    <pre id="datasetDisplay"></pre>
+
+    <script>
+      // Internal state to store dataset
+      let dataset = [];
+      
+      // Counter for tracking conversation rows
+      let conversationCount = 0;
+
+      // Function to add new conversation row
+      document.getElementById('addConversationBtn').addEventListener('click', () => {
+        conversationCount++;
+        
+        const conversationRow = document.createElement('div');
+        conversationRow.classList.add('conversation-row');
+        conversationRow.setAttribute('id', `conversationRow${conversationCount}`);
+        
+        conversationRow.innerHTML = `
+          <label for="conversationFrom${conversationCount}">Conversation From (select):</label>
+          <select id="conversationFrom${conversationCount}">
+            <option value="human">human</option>
+            <option value="gpt">gpt</option>
+            <option value="system">system</option>
+          </select>
+          
+          <label for="conversationValue${conversationCount}">Conversation Message:</label>
+          <textarea id="conversationValue${conversationCount}" placeholder="Enter the conversation..."></textarea>
+          <button class="delete-btn" onclick="deleteConversationRow(${conversationCount})">Delete</button>
+          <hr>
+        `;
+
+        // Append the new conversation row to the conversation container
+        document.getElementById('conversationRows').appendChild(conversationRow);
+      });
+
+      // Function to delete a conversation row
+      function deleteConversationRow(rowId) {
+        const row = document.getElementById(`conversationRow${rowId}`);
+        if (row) {
+          row.remove();
+        }
+      }
+
+      // Function to submit dataset entry
+      document.getElementById('submitDatasetBtn').addEventListener('click', () => {
+        let conversations = [];
+
+        // Collect all the conversation rows
+        for (let i = 1; i <= conversationCount; i++) {
+          const conversationRow = document.getElementById(`conversationRow${i}`);
+          if (conversationRow) {
+            const conversationFrom = document.getElementById(`conversationFrom${i}`).value;
+            const conversationValue = document.getElementById(`conversationValue${i}`).value;
+
+            // Ensure conversation has a value before pushing it
+            if (conversationValue.trim()) {
+              conversations.push({ from: conversationFrom, value: conversationValue });
+            }
+          }
+        }
+
+        const chosenFrom = document.getElementById('chosenFrom').value;
+        const chosenValue = document.getElementById('chosenValue').value;
+        const rejectedFrom = document.getElementById('rejectedFrom').value;
+        const rejectedValue = document.getElementById('rejectedValue').value;
+
+        const validationStatus = document.getElementById('validationStatus').value;
+
+        // Ensure all fields are filled in
+        if (conversations.length > 0 && chosenValue.trim() && rejectedValue.trim()) {
+          // Create the new dataset entry
+          const newEntry = {
+            conversations: conversations,
+            chosen: { from: chosenFrom, value: chosenValue },
+            rejected: { from: rejectedFrom, value: rejectedValue },
+            validation: validationStatus
+              
+          };
+
+          // Add the new entry to the dataset
+          dataset.push(newEntry);
+
+          // Clear conversation rows
+          document.getElementById('conversationRows').innerHTML = '';
+          conversationCount = 0;
+
+          // Clear inputs after submission
+          document.getElementById('chosenValue').value = '';
+          document.getElementById('rejectedValue').value = '';
+
+          // Display the updated dataset
+          displayDataset();
+        } else {
+          alert('Please add at least one conversation, fill in chosen and rejected responses, and provide validation details.');
+        }
+      });
+
+      // Function to display the dataset
+      function displayDataset() {
+        const datasetDisplay = document.getElementById('datasetDisplay');
+        datasetDisplay.innerHTML = '';
+
+        dataset.forEach((entry, index) => {
+          const entryContainer = document.createElement('div');
+          entryContainer.classList.add('entry-container');
+          entryContainer.innerHTML = `
+            <pre>${JSON.stringify(entry, null, 2)}</pre>
+            <button class="delete-btn" onclick="deleteEntry(${index})">Delete Entry</button>
+          `;
+          datasetDisplay.appendChild(entryContainer);
+        });
+      }
+
+      // Function to delete an entry from the dataset
+      function deleteEntry(index) {
+        dataset.splice(index, 1);
+        displayDataset();
+      }
+
+      // Function to download the dataset as JSON
+      document.getElementById('downloadBtn').addEventListener('click', () => {
+        const filename = document.getElementById('filenameInput').value || 'dataset';
+        const dataStr = JSON.stringify(dataset, null, 2);
+        const blob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${filename}.json`; // Use the filename from the input field
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // Function to upload a JSON file and merge it with the current dataset
+      document.getElementById('uploadBtn').addEventListener('click', () => {
+        const fileInput = document.getElementById('uploadFile');
+        const file = fileInput.files[0];
+        
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            try {
+              const uploadedData = JSON.parse(e.target.result);
+              if (Array.isArray(uploadedData)) {
+                dataset = dataset.concat(uploadedData);
+                displayDataset();
+                alert('Dataset uploaded successfully!');
+              } else {
+                alert('Invalid JSON format.');
+              }
+            } catch (err) {
+              alert('Error reading JSON file: ' + err.message);
+            }
+          };
+          reader.readAsText(file);
+        }
+      });
+    </script>
+  </body>
+</html>
