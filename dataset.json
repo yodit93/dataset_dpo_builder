@@ -576,6 +576,124 @@
         "value": "You might consider using a fixed unit like px, but it won’t adjust with the viewport size:\n.fixed-border {\n  border: 5px solid black; /* Fixed border thickness */\n  padding: 20px; /* Padding inside the element */\n}\nWhile this approach ensures a consistent border thickness, it does not respond to changes in the viewport size, which can lead to a less adaptable layout on different screen sizes.\n"
       },
       "validation": "human_validated"
+    },
+    {
+      "conversations": [
+        {
+          "from": "human",
+          "value": "How do I animate a border color change on hover?"
+        }
+      ],
+      "chosen": {
+        "from": "gpt",
+        "value": "To animate a border color change on hover, you can use CSS transition to smoothly animate the border color change. The hover pseudo-class will trigger the color change when the user hovers over the element.\n.animated-border {\n  border: 3px solid black;\n  padding: 20px;\n  transition: border-color 0.5s ease; /* Smoothly transition the border color */\n}\n\n.animated-border:hover {\n  border-color: red; /* Change the border color on hover */\n}\n\nIn this example:\n\nThe transition property is used to animate the border-color change over 0.5s with an ease timing function.\nThe border color smoothly transitions from black to red when the element is hovered.\n"
+      },
+      "rejected": {
+        "from": "gpt",
+        "value": "You might try changing the border color on hover without adding a transition, which causes an abrupt change:\n.animated-border {\n  border: 3px solid black;\n  padding: 20px;\n}\n\n.animated-border:hover {\n  border-color: red; /* Changes instantly without animation */\n}\nWhile this approach changes the border color on hover, it does not animate the transition, leading to an abrupt and less polished effect. The transition is necessary for a smooth animation."
+      },
+      "validation": "human_validated"
+    },
+    {
+      "conversations": [
+        {
+          "from": "human",
+          "value": "How do I add a border only to the bottom of a list item in a flex container?\n\n"
+        }
+      ],
+      "chosen": {
+        "from": "gpt",
+        "value": "To add a border only to the bottom of a list item in a flex container, you can target the specific li element and apply a border-bottom style. This will work seamlessly within a flex container without affecting the layout.\n.flex-container {\n  display: flex;\n  flex-direction: column; /* Stack items vertically */\n}\n\n.flex-item {\n  border-bottom: 2px solid black; /* Apply border only to the bottom */\n  padding: 10px;\n}\nIn this example:\n\nThe flex-container is set to flex-direction: column to stack list items vertically.\nEach .flex item has a border-bottom applied, meaning only the bottom of each item will have a border."
+      },
+      "rejected": {
+        "from": "gpt",
+        "value": "You might try applying a full border and then attempt to hide other sides, which is unnecessarily complex:\n.flex-item {\n  border: 2px solid black; /* Full border */\n  border-top: none; /* Manually hide top */\n  border-left: none; /* Manually hide left */\n  border-right: none; /* Manually hide right */\n  padding: 10px;\n}\nThis approach adds unnecessary complexity by applying a full border and hiding specific sides, which can be avoided by directly using border-bottom."
+      },
+      "validation": "human_validated"
+    },
+    {
+      "conversations": [
+        {
+          "from": "human",
+          "value": "How do I create a border that scales with the element's size?\n\n"
+        }
+      ],
+      "chosen": {
+        "from": "gpt",
+        "value": "To create a border that scales with the size of the element, you can use relative units like em, rem, or percentages for the border width. These units will adjust based on the size of the element or its font size.\n.scaling-border {\n  border: 0.2em solid black; /* Border thickness scales with font size */\n  padding: 20px;\n  font-size: 2em; /* Changing the font size scales the border */\n}\nIn this example:\n\nThe border is defined using em, which scales relative to the element's font size. If the font size increases or decreases, the border thickness will adjust accordingly."
+      },
+      "rejected": {
+        "from": "gpt",
+        "value": "You might use a fixed unit like px, which won't scale with the element:\n.fixed-border {\n  border: 5px solid black; /* Fixed border thickness */\n  padding: 20px;\n  font-size: 2em;\n}\nWhile this approach ensures a consistent border thickness, it does not scale with the size of the element. The px value remains the same regardless of changes to the element's size. Using relative units like em ensures the border scales as the element size changes."
+      },
+      "validation": "human_validated"
+    },
+    {
+      "conversations": [
+        {
+          "from": "human",
+          "value": "How can I make a border appear as if it's inside the element?"
+        }
+      ],
+      "chosen": {
+        "from": "gpt",
+        "value": ".inside-border {\n  box-sizing: border-box; /* Includes the border within the element's dimensions */\n  border: 5px solid black;\n  width: 200px;\n  height: 100px;\n  padding: 20px;\n}\nExplanation:\nBy using box-sizing: border-box, the border is included in the total width and height of the element. This makes the border appear as if it’s inside the element rather than adding extra size to it. This approach ensures the element's size doesn't grow due to the border."
+      },
+      "rejected": {
+        "from": "gpt",
+        "value": ".outside-border {\n  box-sizing: content-box; /* Default behavior: Border is outside the element */\n  border: 5px solid black;\n  width: 200px;\n  height: 100px;\n  padding: 20px;\n}\nIn this case, using box-sizing: content-box (the default value) causes the border to be added outside the element’s width and height. This increases the overall size of the element, making the border appear outside and altering the layout, which is not the intended behavior."
+      },
+      "validation": "human_validated"
+    },
+    {
+      "conversations": [
+        {
+          "from": "human",
+          "value": "How do I create a border that adjusts with the element's height?"
+        }
+      ],
+      "chosen": {
+        "from": "gpt",
+        "value": ".adjustable-border {\n  border: 5px solid black; /* Standard border */\n  height: 50%; /* Height is set to a percentage */\n  width: 100px; /* Fixed width */\n}\nExplanation:\nBy setting the height of the element to a percentage (e.g., 50%), the border will automatically adjust its size with the element’s height as the parent container changes. This allows for a responsive design where the border appears to grow or shrink with the element.\n\n"
+      },
+      "rejected": {
+        "from": "gpt",
+        "value": ".fixed-border {\n  border: 5px solid black; /* Standard border */\n  height: 100px; /* Fixed height */\n  width: 100px; /* Fixed width */\n}\nExplanation:\nIn this example, the height is set to a fixed value (e.g., 100px). This means the border will not adjust dynamically with changes to the parent container's size. While the border itself remains the same, it does not provide the desired responsiveness that the user is looking for."
+      },
+      "validation": "human_validated"
+    },
+    {
+      "conversations": [
+        {
+          "from": "human",
+          "value": "How can I create a border that appears as a highlight when focused?"
+        }
+      ],
+      "chosen": {
+        "from": "gpt",
+        "value": ".highlight-border {\n  border: 2px solid transparent; /* Initial border state */\n  transition: border-color 0.3s; /* Smooth transition */\n}\n\n.highlight-border:focus {\n  border-color: blue; /* Highlight color on focus */\n}\nExplanation:\nBy setting the initial border to transparent and using the :focus pseudo-class, the border color changes to blue (or any desired highlight color) when the element is focused. The transition property creates a smooth effect, enhancing the visual experience."
+      },
+      "rejected": {
+        "from": "gpt",
+        "value": ".no-transition-highlight {\n  border: 2px solid blue; /* Fixed border color */\n}\n\n.no-transition-highlight:focus {\n  border-color: red; /* Change color on focus without transition */\n}\nExplanation:\nWhile this approach does change the border color on focus, it lacks the initial transparency and does not provide a smooth transition. This makes the highlight effect abrupt and less visually appealing, which may not meet the user’s expectation for a highlight effect."
+      },
+      "validation": "human_validated"
+    },
+    {
+      "conversations": [
+        {
+          "from": "human",
+          "value": "How do I prevent borders from overlapping when two elements are next to each other?"
+        }
+      ],
+      "chosen": {
+        "from": "gpt",
+        "value": ".no-overlap {\n  border: 2px solid black; /* Standard border */\n  margin: 5px; /* Add margin to create space between elements */\n}\nExplanation:\nBy adding a margin to the elements, you create space between them, preventing their borders from overlapping. This approach ensures that each element maintains its distinct border without visual interference."
+      },
+      "rejected": {
+        "from": "gpt",
+        "value": ".overlap {\n  border: 2px solid black; /* Standard border */\n  display: inline-block; /* Elements are next to each other */\n}\nExplanation:\nIn this case, using display: inline-block positions the elements next to each other, but without any margin, their borders will overlap. This approach does not address the issue of visual separation, leading to a merged appearance that may not be desirable."
+      },
+      "validation": "human_validated"
     }
-    
   ]
