@@ -57,12 +57,12 @@
       "conversations": [
         {
           "from": "human",
-          "value": "I have a custom element that isn't rendering correctly. Here’s the code:  <custom-header></custom-header>\n\n<script>\n  class CustomHeader extends HTMLElement {\n    constructor() {\n      super();\n      this.attachShadow({ mode: 'open' });\n      this.shadowRoot.innerHTML = `\n        <h1>This is a custom header</h1>\n      `;\n    }\n  }\n\n  customElements.define('custom-header', CustomHeader);\n</script>\n"
+          "value": "I have a custom element that isn't rendering correctly. Here’s the code: ``` <custom-header></custom-header>\n\n<script>\n  class CustomHeader extends HTMLElement {\n    constructor() {\n      super();\n      this.attachShadow({ mode: 'open' });\n      this.shadowRoot.innerHTML = `\n        <h1>This is a custom header</h1>\n      `;\n    }\n  }\n\n  customElements.define('custom-header', CustomHeader);\n</script>```\n"
         }
       ],
       "chosen": {
         "from": "human",
-        "value": "Your code looks correct! The issue might be with where the <custom-header> is placed or how the script is loaded. Make sure that the script is executed after the element is in the DOM. Try moving the script to the end of the body tag:  <custom-header></custom-header>\n\n<script>\n  class CustomHeader extends HTMLElement {\n    constructor() {\n      super();\n      this.attachShadow({ mode: 'open' });\n      this.shadowRoot.innerHTML = `\n        <h1>This is a custom header</h1>\n      `;\n    }\n  }\n\n  customElements.define('custom-header', CustomHeader);\n</script>\nIf this doesn’t fix the issue, check for errors in the browser console, and make sure the browser supports Web Components."
+        "value": "Your code looks correct! The issue might be with where the <custom-header> is placed or how the script is loaded. Make sure that the script is executed after the element is in the DOM. Try moving the script to the end of the body tag: ``` <custom-header></custom-header>\n\n<script>\n  class CustomHeader extends HTMLElement {\n    constructor() {\n      super();\n      this.attachShadow({ mode: 'open' });\n      this.shadowRoot.innerHTML = `\n        <h1>This is a custom header</h1>\n      `;\n    }\n  }\n\n  customElements.define('custom-header', CustomHeader);\n</script>```\nIf this doesn’t fix the issue, check for errors in the browser console, and make sure the browser supports Web Components."
       },
       "rejected": {
         "from": "gpt",
@@ -111,12 +111,12 @@
       "conversations": [
         {
           "from": "human",
-          "value": "I’m trying to validate my form using JavaScript, but I’m not sure how to check if an email input is valid. Here’s my current code:\n\nhtml\nCopiar código\n<form id=\"myForm\">\n  <label for=\"email\">Email:</label>\n  <input type=\"text\" id=\"email\" name=\"email\" required>\n  <button type=\"submit\">Submit</button>\n</form>\n<script>\n  const form = document.getElementById('myForm');\n  form.addEventListener('submit', function(event) {\n    const email = document.getElementById('email').value;\n    if (!email.includes('@')) {\n      event.preventDefault();\n      alert('Please enter a valid email address.');\n    }\n  });\n</script>"
+          "value": "I’m trying to validate my form using JavaScript, but I’m not sure how to check if an email input is valid. Here’s my current code:```\n<form id=\"myForm\">\n  <label for=\"email\">Email:</label>\n  <input type=\"text\" id=\"email\" name=\"email\" required>\n  <button type=\"submit\">Submit</button>\n</form>\n<script>\n  const form = document.getElementById('myForm');\n  form.addEventListener('submit', function(event) {\n    const email = document.getElementById('email').value;\n    if (!email.includes('@')) {\n      event.preventDefault();\n      alert('Please enter a valid email address.');\n    }\n  });\n</script>```"
         }
       ],
       "chosen": {
         "from": "gpt",
-        "value": "You’re on the right track, but for a more robust solution, consider using a regular expression to validate the email format. Here’s an improved version:\n\nhtml\nCopiar código\n<form id=\"myForm\">\n  <label for=\"email\">Email:</label>\n  <input type=\"text\" id=\"email\" name=\"email\" required>\n  <button type=\"submit\">Submit</button>\n</form>\n<script>\n  const form = document.getElementById('myForm');\n  form.addEventListener('submit', function(event) {\n    const email = document.getElementById('email').value;\n    const emailPattern = /^[^ ]+@[^ ]+\\.[a-z]{2,3}$/;\n    if (!emailPattern.test(email)) {\n      event.preventDefault();\n      alert('Please enter a valid email address.');\n    }\n  });\n</script>\nThis code checks if the email follows a valid format using a regular expression."
+        "value": "You’re on the right track, but for a more robust solution, consider using a regular expression to validate the email format. Here’s an improved version:```\n<form id=\"myForm\">\n  <label for=\"email\">Email:</label>\n  <input type=\"text\" id=\"email\" name=\"email\" required>\n  <button type=\"submit\">Submit</button>\n</form>\n<script>\n  const form = document.getElementById('myForm');\n  form.addEventListener('submit', function(event) {\n    const email = document.getElementById('email').value;\n    const emailPattern = /^[^ ]+@[^ ]+\\.[a-z]{2,3}$/;\n    if (!emailPattern.test(email)) {\n      event.preventDefault();\n      alert('Please enter a valid email address.');\n    }\n  });\n</script>```\nThis code checks if the email follows a valid format using a regular expression."
       },
       "rejected": {
         "from": "gpt",
