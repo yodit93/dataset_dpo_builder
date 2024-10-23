@@ -102,7 +102,7 @@
         },
         "rejected": {
           "from": "gpt",
-          "value": " To enforce a minimum password length, you only need to use JavaScript and manually check the string length. HTML attributes like minlength aren’t very reliable."
+          "value": "To enforce a minimum password length, you only need to use JavaScript and manually check the string length. HTML attributes like minlength aren’t very reliable."
         },
         "validation": "human_validated",
         "reproduction steps.": "1. Create an HTML form with a password input field. 2. Add the minlength attribute with a value of 8 to the password field. 3. Test the form by submitting it with passwords of different lengths. 4. Verify that the form prevents submission with passwords that are less than 8 characters long."
@@ -120,7 +120,7 @@
       },
       "rejected": {
         "from": "gpt",
-        "value": " You don’t need JavaScript validation for an email input, just checking if it contains the @ symbol is enough."
+        "value": "You don’t need JavaScript validation for an email input, just checking if it contains the @ symbol is enough."
       },
       "validation": "human_validated",
       "reproduction steps.": "1. Create an HTML form with an email input field. 2. Add JavaScript code to validate the email input on form submission. 3. Use a regular expression to check if the email format is valid. 4. Test the form by submitting it with valid and invalid email addresses. 5. Verify that the form prevents submission with an invalid email address and displays an alert message."
@@ -165,12 +165,12 @@
       "conversations": [
         {
           "from": "human",
-          "value": " I’m trying to center a div using CSS but it's not working. Can you help?"
+          "value": "I’m trying to center a div using CSS but it's not working. Can you help?"
         }
       ],
       "chosen": {
         "from": "gpt",
-        "value": " To center a div both horizontally and vertically, you can use Flexbox. Here’s how you can do it:```\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Centering a Div</title>\n  <style>\n    body, html {\n      height: 100%;\n      margin: 0;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n    }\n    .centered-div {\n      background-color: #ddd;\n      padding: 20px;\n      border-radius: 8px;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"centered-div\">This is a centered div</div>\n</body>\n</html>```\nThis uses Flexbox to center the div element. justify-content: center; centers it horizontally, and align-items: center; centers it vertically."
+        "value": "To center a div both horizontally and vertically, you can use Flexbox. Here’s how you can do it:```\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Centering a Div</title>\n  <style>\n    body, html {\n      height: 100%;\n      margin: 0;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n    }\n    .centered-div {\n      background-color: #ddd;\n      padding: 20px;\n      border-radius: 8px;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"centered-div\">This is a centered div</div>\n</body>\n</html>```\nThis uses Flexbox to center the div element. justify-content: center; centers it horizontally, and align-items: center; centers it vertically."
       },
       "rejected": {
         "from": "gpt",
@@ -273,7 +273,7 @@
       "conversations": [
         {
           "from": "human",
-          "value": " I am trying to position an element at the bottom-right corner of a container. How can I do that?"
+          "value": "I am trying to position an element at the bottom-right corner of a container. How can I do that?"
         }
       ],
       "chosen": {
@@ -291,7 +291,7 @@
       "conversations": [
         {
           "from": "human",
-          "value": " How can I ensure my website looks good on both desktop and mobile screens?"
+          "value": "How can I ensure my website looks good on both desktop and mobile screens?"
         }
       ],
       "chosen": {
@@ -314,11 +314,11 @@
       ],
       "chosen": {
         "from": "gpt",
-        "value": " Yes, using percentage-based widths is a common technique to make your site responsive. This allows the element to scale relative to the parent container or viewport. For example:```\n.image {\n  width: 50%;\n  height: auto;\n}```\nIn this example, the image will take up 50% of the width of its parent container, and the height will adjust proportionally to maintain the aspect ratio."
+        "value": "Yes, using percentage-based widths is a common technique to make your site responsive. This allows the element to scale relative to the parent container or viewport. For example:```\n.image {\n  width: 50%;\n  height: auto;\n}```\nIn this example, the image will take up 50% of the width of its parent container, and the height will adjust proportionally to maintain the aspect ratio."
       },
       "rejected": {
         "from": "gpt",
-        "value": " To make an element responsive, just set its width to auto:```\n.image {\n  width: auto;\n}```"
+        "value": "To make an element responsive, just set its width to auto:```\n.image {\n  width: auto;\n}```"
       },
       "validation": "human_validated",
       "reproduction steps.": "1. Create an HTML file with an element to make responsive. 2. Add CSS styles with percentage-based widths to make the element responsive. 3. Test the webpage in a browser to see the element scale relative to the parent container or viewport."
@@ -381,7 +381,7 @@
       "conversations": [
         {
           "from": "human",
-          "value": " I tried making a popup, but it closes too quickly after opening. Can you help me fix it?"
+          "value": "I tried making a popup, but it closes too quickly after opening. Can you help me fix it?"
         }
       ],
       "chosen": {
@@ -399,16 +399,16 @@
       "conversations": [
         {
           "from": "human",
-          "value": " I tried adding an interactive feature using JavaScript, but my button isn't working."
+          "value": "I tried adding an interactive feature using JavaScript, but my button isn't working."
         }
       ],
       "chosen": {
         "from": "gpt",
-        "value": " If your button isn't working, make sure you have added the correct event listener and that the element IDs match. Here's an example of adding interactivity to a button that toggles visibility of a text box:```\n<button id=\"toggleButton\">Show/Hide Text</button>\n<p id=\"textBox\" style=\"display:none;\">This is the text to toggle.</p>\n\n<script>\n  document.getElementById('toggleButton').addEventListener('click', function() {\n    const textBox = document.getElementById('textBox');\n    textBox.style.display = textBox.style.display === 'none' ? 'block' : 'none';\n  });\n</script>```\nThis button shows or hides the text each time it's clicked."
+        "value": "If your button isn't working, make sure you have added the correct event listener and that the element IDs match. Here's an example of adding interactivity to a button that toggles visibility of a text box:```\n<button id=\"toggleButton\">Show/Hide Text</button>\n<p id=\"textBox\" style=\"display:none;\">This is the text to toggle.</p>\n\n<script>\n  document.getElementById('toggleButton').addEventListener('click', function() {\n    const textBox = document.getElementById('textBox');\n    textBox.style.display = textBox.style.display === 'none' ? 'block' : 'none';\n  });\n</script>```\nThis button shows or hides the text each time it's clicked."
       },
       "rejected": {
         "from": "gpt",
-        "value": " Make sure your button has the onclick attribute directly inside the HTML tag:```\n<button onclick=\"alert('Hello!')\">Click me</button>```"
+        "value": "Make sure your button has the onclick attribute directly inside the HTML tag:```\n<button onclick=\"alert('Hello!')\">Click me</button>```"
       },
       "validation": "human_validated",
       "reproduction steps.": "1. Create an HTML file with a button and an element to interact with. 2. Add JavaScript code to toggle the visibility of the element when the button is clicked. 3. Test the webpage in a browser to see the button toggle the visibility of the element."
@@ -435,7 +435,7 @@
       "conversations": [
         {
           "from": "human",
-          "value": " What is the DOM and how can I use it in my web project?"
+          "value": "What is the DOM and how can I use it in my web project?"
         }
       ],
       "chosen": {
@@ -516,7 +516,7 @@
       },
       "rejected": {
         "from": "gpt",
-        "value": " If the data isn’t updating, just refresh the page manually to reload everything:```\nlocation.reload();```"
+        "value": "If the data isn’t updating, just refresh the page manually to reload everything:```\nlocation.reload();```"
       },
       "validation": "human_validated",
       "reproduction steps.": "1. Create an HTML file with an element to update with data and json server. 2. Add JavaScript code to fetch data using Ajax and update the element. 3. Test the webpage in a browser to see the data updated when the function is called."
