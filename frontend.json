@@ -75,7 +75,7 @@
     "conversations": [
       {
         "from": "human",
-        "value": " I’m working on a webpage and trying to use HTML to structure the content. Here’s my code snippet:```\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Sample Page</title>\n    <link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n    <header>\n        <h1>Welcome to My Website</h1>\n    </header>\n    <main>\n        <section id=\"about\">\n            <h2>About Us</h2>\n            <p>We are a small company...</p>\n        </section>\n        <footer>\n            <p>&copy; 2024 My Website</p>\n        </footer>\n    </main>\n</body>\n</html>```"
+        "value": "I’m working on a webpage and trying to use HTML to structure the content. Here’s my code snippet:```\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Sample Page</title>\n    <link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n    <header>\n        <h1>Welcome to My Website</h1>\n    </header>\n    <main>\n        <section id=\"about\">\n            <h2>About Us</h2>\n            <p>We are a small company...</p>\n        </section>\n        <footer>\n            <p>&copy; 2024 My Website</p>\n        </footer>\n    </main>\n</body>\n</html>```"
       }
     ],
     "chosen": {
@@ -93,7 +93,7 @@
     "conversations": [
       {
         "from": "human",
-        "value": " What is web accessibility?"
+        "value": "What is web accessibility?"
       }
     ],
     "chosen": {
@@ -116,11 +116,11 @@
     ],
     "chosen": {
       "from": "gpt",
-      "value": " To improve the accessibility of your website, consider implementing the following techniques:\n\nUse Semantic HTML: Properly use HTML elements (like headings, lists, and tables) to create a logical structure.\nProvide Text Alternatives: Use alt attributes for images and text alternatives for non-text content to ensure screen readers can convey the information.\nEnsure Sufficient Contrast: Make sure that the color contrast between text and background meets accessibility standards for readability.\nKeyboard Navigation: Ensure that all interactive elements can be accessed and used with a keyboard alone."
+      "value": "To improve the accessibility of your website, consider implementing the following techniques:\n\nUse Semantic HTML: Properly use HTML elements (like headings, lists, and tables) to create a logical structure.\nProvide Text Alternatives: Use alt attributes for images and text alternatives for non-text content to ensure screen readers can convey the information.\nEnsure Sufficient Contrast: Make sure that the color contrast between text and background meets accessibility standards for readability.\nKeyboard Navigation: Ensure that all interactive elements can be accessed and used with a keyboard alone."
     },
     "rejected": {
       "from": "gpt",
-      "value": " You can improve accessibility by just using larger fonts and making the website colorful. As long as it looks appealing, everyone will be able to use it."
+      "value": "You can improve accessibility by just using larger fonts and making the website colorful. As long as it looks appealing, everyone will be able to use it."
     },
     "validation": "human_validated",
     "reproduction steps." : "Check for any typos on the response and ensure the explanation is clear and accurate."
@@ -129,7 +129,7 @@
     "conversations": [
       {
         "from": "human",
-        "value": " I’m trying to make my website more accessible. Here’s my code snippet for an image:```\n<img src=\"image.jpg\" title=\"A beautiful sunset\"```"
+        "value": "I’m trying to make my website more accessible. Here’s my code snippet for an image:```\n<img src=\"image.jpg\" title=\"A beautiful sunset\"```"
       }
     ],
     "chosen": {
@@ -138,7 +138,7 @@
     },
     "rejected": {
       "from": "gpt",
-      "value": " Your code is fine as it is. Just having a title should be enough for accessibility, and users will get the context from that."
+      "value": "Your code is fine as it is. Just having a title should be enough for accessibility, and users will get the context from that."
     },
     "validation": "human_validated",
     "reproduction steps." : "Check for any typos on the response, ensute the code is kept inside the fenced code block and verify that the explanation is clear and accurate."
@@ -156,7 +156,7 @@
     },
     "rejected": {
       "from": "gpt",
-      "value": " Web accessibility is just about adding subtitles for videos and making text bigger. It’s mostly for visual disabilities."
+      "value": "Web accessibility is just about adding subtitles for videos and making text bigger. It’s mostly for visual disabilities."
     },
     "validation": "human_validated",
     "reproduction steps." : "Check for any typos on the response and ensure the explanation is clear and accurate."
@@ -206,7 +206,7 @@
     ],
     "chosen": {
       "from": "gpt",
-      "value": " A <div> is a generic container in HTML with no semantic meaning. Semantic elements, like <section>, <header>, and <article>, describe the purpose of the content they contain, making it easier for developers, browsers, and assistive technologies to understand the layout. Here’s a comparison:\n\nUsing <div>:```\n<div class=\"header\">\n  <h1>My Website</h1>\n</div>\n\n<div class=\"article\">\n  <p>Content goes here</p>\n</div>\n\n<div class=\"footer\">\n  <p>Footer info</p>\n</div>```\nUsing semantic elements:```\n<header>\n  <h1>My Website</h1>\n</header>\n\n<article>\n  <p>Content goes here</p>\n</article>\n\n<footer>\n  <p>Footer info</p>\n</footer>```\nThe second example is more understandable and improves SEO and accessibility."
+      "value": "A <div> is a generic container in HTML with no semantic meaning. Semantic elements, like <section>, <header>, and <article>, describe the purpose of the content they contain, making it easier for developers, browsers, and assistive technologies to understand the layout. Here’s a comparison:\n\nUsing <div>:```\n<div class=\"header\">\n  <h1>My Website</h1>\n</div>\n\n<div class=\"article\">\n  <p>Content goes here</p>\n</div>\n\n<div class=\"footer\">\n  <p>Footer info</p>\n</div>```\nUsing semantic elements:```\n<header>\n  <h1>My Website</h1>\n</header>\n\n<article>\n  <p>Content goes here</p>\n</article>\n\n<footer>\n  <p>Footer info</p>\n</footer>```\nThe second example is more understandable and improves SEO and accessibility."
     },
     "rejected": {
       "from": "gpt",
@@ -219,7 +219,7 @@
     "conversations": [
       {
         "from": "human",
-        "value": " I’m trying to build a blog layout. I’ve used semantic HTML, but I’m not sure if I’m doing it right. Here’s my code:```\n<div>\n  <h1>Blog Title</h1>\n</div>\n\n<div>\n  <p>Blog content goes here...</p>\n</div>```"
+        "value": "I’m trying to build a blog layout. I’ve used semantic HTML, but I’m not sure if I’m doing it right. Here’s my code:```\n<div>\n  <h1>Blog Title</h1>\n</div>\n\n<div>\n  <p>Blog content goes here...</p>\n</div>```"
       }
     ],
     "chosen": {
