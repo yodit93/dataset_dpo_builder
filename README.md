@@ -1,2 +1,1 @@
-This project is intended to create a dataset for common CSS problems to train an AI.
-To verify frontend solution.
+This project is intended to create a dataset for common frontend problems to train an AI and to verify existed frontend solution.
